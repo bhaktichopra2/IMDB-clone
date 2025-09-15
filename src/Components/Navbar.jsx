@@ -1,0 +1,15 @@
+import React from 'react'
+import Logo from '../image.png'
+import {Link} from 'react-router-dom'
+
+const Navbar = () => {
+  return (
+    <div className='flex border space-x-10 items-center pl-3 py-4' >
+        <img className='w-[60px]' src={Logo} alt="" />
+        <Link to="/" className='text-blue-700 text-xl font-bold'>Movies</Link>
+        <Link to="/watchList" className='text-blue-700 text-xl font-bold'  >WatchList</Link>
+    </div>
+  )
+}
+
+export default Navbar

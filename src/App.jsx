@@ -15,13 +15,21 @@ function App() {
     setWatchList(newWatchList)
     console.log(newWatchList)
   }
+
+  let handleRmWatchList = (movieObj)=>{
+    let filteredWatchList = watchList.filter((movie)=>{
+      return movie.id != movieObj.id
+    })
+
+    setWatchList(filteredWatchList)
+  }
   return (
     <>
       <BrowserRouter>
         <Navbar />
 
         <Routes>
-          <Route path='/' element={<> <Banner /> <Movies handleAddWatchList={handleAddWatchList} /> </>} />
+          <Route path='/' element={<> <Banner /> <Movies watchList={watchList} handleAddWatchList={handleAddWatchList} handleRmWatchList={handleRmWatchList} /> </>} />
           <Route path='/watchList' element={<WatchList />} />
         </Routes>
 

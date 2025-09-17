@@ -4,7 +4,7 @@ import axios from 'axios'
 import { useEffect } from 'react'
 import Pagination from './Pagination'
 
-function Movies({handleAddWatchList}) {
+function Movies({handleAddWatchList, handleRmWatchList, watchList}) {
 
   const [movies, setMovies] = useState([])
   const [pageNo, setPageNo] = useState(1)
@@ -33,7 +33,7 @@ function Movies({handleAddWatchList}) {
       </div>
       <div className='flex flex-row flex-wrap justify-around ' >
         {movies.map((movieObj)=>{
-          return <MovieCard key={movieObj.id} movieObj={movieObj} poster_path={movieObj.poster_path}  name={movieObj.original_title} handleAddWatchList={handleAddWatchList} />
+          return <MovieCard key={movieObj.id} movieObj={movieObj} poster_path={movieObj.poster_path}  name={movieObj.original_title} handleAddWatchList={handleAddWatchList} handleRmWatchList={handleRmWatchList} watchList={watchList} />
         })}
       </div>
       <Pagination pageNo={pageNo} handleNext={handleNext} handlePrev={handlePrev} />

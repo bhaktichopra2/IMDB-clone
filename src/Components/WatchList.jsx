@@ -5,7 +5,8 @@ function WatchList() {
     <>
 
     <div className='flex justify-center flex-wrap m-4'>
-      <div className='bg-blue-400 h-[3rem] w-[9rem] rounded-xl text-white font-bold flex justify-center items-center'>Action</div>
+      <div className='bg-blue-400 h-[3rem] w-[9rem] rounded-xl text-white font-bold flex justify-center items-center mx-4'>Action</div>
+      <div className='bg-blue-400 h-[3rem] w-[9rem] rounded-xl text-white font-bold flex justify-center items-center mx-4'>Action</div>
     </div>
       <div className='flex justify-center my-4'>
         <input type="text" className='h-[3rem] w-[18-rem] bg-gray-200 outline-none px-4 ' placeholder='Search for movies...' />

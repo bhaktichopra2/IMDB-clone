@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css'
 import Banner from './Components/Banner';
 import Movies from './Components/Movies'
@@ -12,6 +12,7 @@ function App() {
 
   let handleAddWatchList = (movieObj)=>{
     let newWatchList = [...watchList, movieObj]
+    localStorage.setItem('moviesApp', JSON.stringify(newWatchList))
     setWatchList(newWatchList)
     console.log(newWatchList)
   }
@@ -23,6 +24,14 @@ function App() {
 
     setWatchList(filteredWatchList)
   }
+
+  useEffect(()=>{
+    let movieLocal = localStorage.getItem('moviesApp')
+    if(!movieLocal){
+      return
+    }
+    setWatchList(JSON.parse(movieLocal))
+  })
   return (
     <>
       <BrowserRouter>
@@ -30,7 +39,7 @@ function App() {
 
         <Routes>
           <Route path='/' element={<> <Banner /> <Movies watchList={watchList} handleAddWatchList={handleAddWatchList} handleRmWatchList={handleRmWatchList} /> </>} />
-          <Route path='/watchList' element={<WatchList />} />
+          <Route path='/watchList' element={<WatchList watchList={watchList} />} />
         </Routes>
 
       </BrowserRouter>

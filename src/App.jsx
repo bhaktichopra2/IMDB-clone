@@ -21,7 +21,6 @@ function App() {
     let filteredWatchList = watchList.filter((movie)=>{
       return movie.id != movieObj.id
     })
-
     setWatchList(filteredWatchList)
   }
 
@@ -31,7 +30,7 @@ function App() {
       return
     }
     setWatchList(JSON.parse(movieLocal))
-  })
+  },[])
   return (
     <>
       <BrowserRouter>

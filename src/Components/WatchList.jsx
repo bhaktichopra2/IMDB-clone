@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import genreids from '../Utility/genre'
 
 function WatchList({ watchList, setWatchList }) {
 
@@ -65,7 +66,7 @@ function WatchList({ watchList, setWatchList }) {
                 <td>
                   {movieObj.popularity}
                 </td>
-                <td>Drama</td>
+                <td>{genreids[movieObj.genre_ids[0]]}</td>
                 <td className='text-red-600'>Delete</td>
               </tr>
             })}

@@ -10,27 +10,28 @@ function App() {
 
   let [watchList, setWatchList] = useState([])
 
-  let handleAddWatchList = (movieObj)=>{
+  let handleAddWatchList = (movieObj) => {
     let newWatchList = [...watchList, movieObj]
     localStorage.setItem('moviesApp', JSON.stringify(newWatchList))
     setWatchList(newWatchList)
     console.log(newWatchList)
   }
 
-  let handleRmWatchList = (movieObj)=>{
-    let filteredWatchList = watchList.filter((movie)=>{
+  let handleRmWatchList = (movieObj) => {
+    let filteredWatchList = watchList.filter((movie) => {
       return movie.id != movieObj.id
     })
+    localStorage.setItem('moviesApp', JSON.stringify(filteredWatchList))
     setWatchList(filteredWatchList)
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     let movieLocal = localStorage.getItem('moviesApp')
-    if(!movieLocal){
+    if (!movieLocal) {
       return
     }
     setWatchList(JSON.parse(movieLocal))
-  },[])
+  }, [])
   return (
     <>
       <BrowserRouter>
@@ -38,7 +39,7 @@ function App() {
 
         <Routes>
           <Route path='/' element={<> <Banner /> <Movies watchList={watchList} handleAddWatchList={handleAddWatchList} handleRmWatchList={handleRmWatchList} /> </>} />
-          <Route path='/watchList' element={<WatchList watchList={watchList} setWatchList={setWatchList} />} />
+          <Route path='/watchList' element={<WatchList watchList={watchList} setWatchList={setWatchList} handleRmWatchList={handleRmWatchList} />} />
         </Routes>
 
       </BrowserRouter>
